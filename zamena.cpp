@@ -1,0 +1,54 @@
+// Эта программа меняет местами чётные и нечётные строки в матрице размера n*n
+#include<stdio.h> 
+#include<time.h> 
+#include<stdlib.h> 
+main() 
+{ 
+	srand(time(NULL));
+	int n; int k = 0;
+	scanf("%d", &n); 
+	int a[100][100];
+	int a_buf[100][100];
+	for(int i=0; i<n; i++) 
+	{ 
+		for(int j =0; j<n; j++) 
+		{ 
+			a[i][j] = rand()%10;
+		}
+	} 
+	for(int i=0; i<n; i++) 
+	{ 
+		for(int j =0; j<n; j++) 
+		{ 
+			printf("%3d", a[i][j]);
+		} 
+		printf("\n");
+	}
+	printf("\n\n");
+	while(k<n) 
+	{ 
+		for(int j = 0; j<n; j++) 
+		{ 
+			a_buf[k][j] = a[k+1][j]; 
+			a_buf[k+1][j] = a[k][j];
+		}
+	k += 2;	
+	}
+	if(n%2 != 0) 
+	{ 
+		for(int j = 0; j<n; j++) 
+		{ 
+			a_buf[n-1][j] = a[n-1][j]; 
+			
+		}
+	}
+	for(int i=0; i<n; i++) 
+	{ 
+		for(int j =0; j<n; j++) 
+		{ 
+			printf("%3d", a_buf[i][j]);
+		} 
+		printf("\n");
+	}
+	
+}
